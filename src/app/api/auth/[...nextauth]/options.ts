@@ -1,5 +1,5 @@
 import { API_URL } from '@/constants';
-import { LoginResponse } from '@/screens/auth/types';
+import { LoginResponse } from '@/screens/login/types';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
