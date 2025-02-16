@@ -9,7 +9,7 @@ export const FormLogin = () => {
   return (
     <div onClick={handleLogin}>
       Login
-      <CloseIcon tw="w-10 h-10"/>
+      <CloseIcon tw="w-10 h-10" />
     </div>
   );
 };

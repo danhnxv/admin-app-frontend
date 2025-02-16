@@ -7,3 +7,4 @@ tmp
 withTwin.js
 next.config.mjs
 postcss.config.mjs
+lint-staged.config.js
