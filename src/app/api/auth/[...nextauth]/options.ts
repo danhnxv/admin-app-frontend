@@ -1,5 +1,5 @@
 import { API_ENDPOINT } from '@/constants';
-import { LoginResponse } from '@/features/auth/types';
+import { LoginResponse } from '@/screens/auth/types';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
