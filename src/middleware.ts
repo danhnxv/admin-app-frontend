@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "next-auth/middleware";
-import { getToken } from "next-auth/jwt";
-import { isPrivatePage } from "@/utils";
-import { LOGIN_URL } from "@/constants";
+import { NextRequest, NextResponse } from 'next/server';
+import { withAuth } from 'next-auth/middleware';
+import { getToken } from 'next-auth/jwt';
+import { isPrivatePage } from '@/utils';
+import { LOGIN_URL } from '@/constants';
 
 const authMiddleware = withAuth({
   callbacks: {
@@ -17,8 +17,8 @@ const authMiddleware = withAuth({
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  console.log({path});
-  if (path === "/") {
+  console.log({ path });
+  if (path === '/') {
     return NextResponse.redirect(new URL(LOGIN_URL, req.url));
   }
   if (isPrivatePage(path)) {
@@ -28,7 +28,7 @@ export default async function middleware(req: NextRequest) {
 
     const isAuthenticated = !!token;
     if (path.startsWith(LOGIN_URL) && isAuthenticated) {
-      const url = req.nextUrl.searchParams.get("callbackUrl") || LOGIN_URL;
+      const url = req.nextUrl.searchParams.get('callbackUrl') || LOGIN_URL;
       return NextResponse.redirect(new URL(url, req.url));
     }
     return NextResponse.next();

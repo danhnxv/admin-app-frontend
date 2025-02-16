@@ -1,1 +1,1 @@
-export * from './useFormLoginLogic'
+export * from './useFormLoginLogic';

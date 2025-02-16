@@ -1,6 +1,6 @@
-import { Session } from "next-auth";
-import React from "react";
-import { AppProvider } from "./AppProvider";
+import { Session } from 'next-auth';
+import React from 'react';
+import { AppProvider } from './AppProvider';
 
 type AppProviderProps = {
   children?: React.ReactNode;
