@@ -7,7 +7,7 @@ import CloseIcon from 'public/assets/components/FormLogin/close.svg';
 export const FormLogin = () => {
   const { handleLogin } = useFormLoginLogic();
   return (
-    <div onClick={handleLogin}>
+    <div onClick={handleLogi}>
       Login
       <CloseIcon tw="w-10 h-10"/>
     </div>
