@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import 'twin.macro';
 import tw from 'twin.macro';

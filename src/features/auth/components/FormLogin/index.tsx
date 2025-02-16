@@ -8,7 +8,7 @@ export const FormLogin = () => {
   const { handleLogin } = useFormLoginLogic();
   return (
     <div onClick={handleLogin}>
-      Login
+      Login Page
       <CloseIcon tw="w-10 h-10" />
     </div>
   );

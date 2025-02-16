@@ -7,7 +7,7 @@ interface ThemeProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProps) => {
-  const theme = "dark";
+  const theme = 'dark';
 
   useEffect(() => {
     theme && (document.body.className = theme);

@@ -1,23 +1,21 @@
-import { API_ENDPOINT } from "@/constants";
-import { LoginResponse } from "@/features/auth/types";
-import type { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-
-
+import { API_ENDPOINT } from '@/constants';
+import { LoginResponse } from '@/features/auth/types';
+import type { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
         username: {
-          label: "Username:",
-          type: "text",
+          label: 'Username:',
+          type: 'text',
         },
 
         password: {
-          label: "Password:",
-          type: "password",
+          label: 'Password:',
+          type: 'password',
         },
       },
       async authorize(credentials) {
@@ -27,9 +25,9 @@ export const options: NextAuthOptions = {
         };
 
         const res = await fetch(`${API_ENDPOINT}/auth/login`, {
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify(payload),
-          headers: { "Content-Type": "application/json" },
+          headers: { 'Content-Type': 'application/json' },
         });
         const user = await res.json();
         if (res.status === 400) {
@@ -49,10 +47,10 @@ export const options: NextAuthOptions = {
     },
 
     jwt: async ({ token, user, trigger, session }) => {
-      if (trigger === "update" && session?.user) {
+      if (trigger === 'update' && session?.user) {
         token.user = session.user;
       } else {
-        if(user) {
+        if (user) {
           token.user = user;
         }
       }
@@ -64,6 +62,6 @@ export const options: NextAuthOptions = {
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
 };
