@@ -13,3 +13,10 @@ export interface AuthData {
   token: string;
   user: User;
 }
+
+export interface FactsResponse {
+  data: {
+    fact: string;
+    length: number;
+  }[];
+}

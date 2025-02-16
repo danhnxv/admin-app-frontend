@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from '@/constants';
+import { API_URL } from '@/constants';
 import { LoginResponse } from '@/screens/auth/types';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -24,7 +24,7 @@ export const options: NextAuthOptions = {
           password: credentials?.password,
         };
 
-        const res = await fetch(`${API_ENDPOINT}/auth/login`, {
+        const res = await fetch(`${API_URL}/auth/login`, {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: { 'Content-Type': 'application/json' },

@@ -1,4 +1,6 @@
-export const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+export * from './endpoints';
+
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const PRIVATE_PAGES = ['/dashboard'];
 
