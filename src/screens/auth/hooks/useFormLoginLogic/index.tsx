@@ -2,8 +2,7 @@ import { useAtom } from 'jotai';
 import { authAtom } from '../../stores';
 
 export const useFormLoginLogic = () => {
-  const [authData, setAuthData] = useAtom(authAtom);
-  console.log({ authData });
+  const [, setAuthData] = useAtom(authAtom);
   const handleLogin = () => {
     setAuthData({
       token: '123',

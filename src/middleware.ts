@@ -17,7 +17,6 @@ const authMiddleware = withAuth({
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  console.log({ path });
   if (path === '/') {
     return NextResponse.redirect(new URL(LOGIN_URL, req.url));
   }
