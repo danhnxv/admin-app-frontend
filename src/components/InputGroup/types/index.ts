@@ -1,4 +1,4 @@
-import { TextFieldProps } from '@mui/material';
+import { CheckboxProps, SxProps, TextFieldProps, Theme } from '@mui/material';
 import { TwStyle } from 'twin.macro';
 
 type GenericFormInput = {
@@ -16,6 +16,22 @@ type GenericFormInput = {
   tagLabel?: string;
 };
 
+export type FormInputCheckbox = GenericFormInput & {
+  options: Pick<CheckboxProps, 'disabled' | 'size' | 'color' | 'sx'> &
+    {
+      value: string | number;
+      label?: React.ReactNode | string;
+      addition?: React.ReactNode;
+      checkboxCss?: TwStyle;
+      checkboxLabelCss?: TwStyle;
+      customStyle?: TwStyle | (false | TwStyle)[];
+      customCheckboxStyle?: SxProps<Theme>;
+      useDefaultIcons?: boolean;
+      disabled?: boolean;
+    }[];
+  formControlStyle?: TwStyle;
+};
+
 export type FormInputTextField = GenericFormInput &
   TextFieldProps & {
     startIcon?: React.ReactElement;
@@ -29,4 +45,9 @@ export type FormInputTextField = GenericFormInput &
     clearable?: boolean;
   };
 
-export type FormInputGenericProps = FormInputTextField & { inputType: 'TextField' };
+export type FormInputPasswordField = GenericFormInput & TextFieldProps;
+
+export type FormInputGenericProps =
+  | (FormInputTextField & { inputType: 'TextField' })
+  | (FormInputPasswordField & { inputType: 'PasswordField' })
+  | (FormInputCheckbox & { inputType: 'CheckboxField' });

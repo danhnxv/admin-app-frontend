@@ -15,7 +15,6 @@ export const FormTextField: FC<FormInputTextField> = (props) => {
     control,
     formState: { errors },
   } = useFormContext();
-
   const error = errors[name];
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -29,14 +28,16 @@ export const FormTextField: FC<FormInputTextField> = (props) => {
       defaultValue={defaultValue || ''}
       render={({ field: { ...controlProps } }) => (
         <div css={[tw`flex flex-col gap-1`, containerCss]}>
-          <div tw="flex justify-between items-end">{label && <label css={[labelCss]}>{label}</label>}</div>
+          <div tw="flex justify-between items-end">
+            {label && <label css={[tw`block w-full`, labelCss]}>{label}</label>}
+          </div>
           <TextField
             {...rest}
             {...controlProps}
             onChange={onChange}
             error={!!error}
             helperText={error?.message as string}
-            tw="[& input]:(text-sm leading-4 font-normal px-3)"
+            tw="[& input]:(text-sm leading-4 font-normal px-4 pt-6 )"
           />
         </div>
       )}

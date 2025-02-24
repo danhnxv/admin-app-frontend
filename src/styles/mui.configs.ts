@@ -1,8 +1,8 @@
-import { ThemeOptions, createTheme } from '@mui/material';
+import { ThemeOptions, createTheme } from '@mui/material/styles';
 
 const muiThemeConfigs: ThemeOptions = {
   typography: {
-    fontFamily: ['Work Sans', 'sans-serif'].join(','),
+    fontFamily: ['Nunito Sans', 'sans-serif'].join(','),
     button: {
       textTransform: 'none',
     },

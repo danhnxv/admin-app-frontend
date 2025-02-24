@@ -1,4 +1,4 @@
-import { API_URL } from '@/constants';
+import { API_URL } from '@/constants/index';
 import { LoginResponse } from '@/screens/login/types';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -8,8 +8,8 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: {
-          label: 'Username:',
+        email: {
+          label: 'email:',
           type: 'text',
         },
 
@@ -20,23 +20,25 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const payload = {
-          username: credentials?.username,
-          password: credentials?.password,
+          Email: credentials?.email,
+          Password: credentials?.password,
         };
 
-        const res = await fetch(`${API_URL}/auth/login`, {
+        const res = await fetch(`${API_URL}/auth/signin`, {
           method: 'POST',
+
           body: JSON.stringify(payload),
           headers: { 'Content-Type': 'application/json' },
         });
         const user = await res.json();
-        if (res.status === 400) {
+
+        if (!res.ok) {
           throw new Error(JSON.stringify(user));
         } else {
           if (user) {
             return { ...user };
           }
-          return null;
+          throw new Error();
         }
       },
     }),
