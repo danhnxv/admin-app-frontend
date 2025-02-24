@@ -20,3 +20,8 @@ export interface FactsResponse {
     length: number;
   }[];
 }
+export interface FormLogin {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}

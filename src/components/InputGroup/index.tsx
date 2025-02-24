@@ -3,10 +3,11 @@
 import React, { FC } from 'react';
 import { FieldValues, UseFormReturn } from 'react-hook-form/dist/types';
 import { FormProvider } from 'react-hook-form';
-
 import tw, { TwStyle } from 'twin.macro';
-import { FormInputGenericProps, FormInputTextField } from './types';
+import { FormInputCheckbox, FormInputGenericProps, FormInputPasswordField, FormInputTextField } from './types';
 import { FormTextField } from './components';
+import { PasswordField } from './components/PasswordField';
+import { CheckboxField } from './components/CheckBoxField';
 
 interface Props {
   formHandler: UseFormReturn<FieldValues, any> | UseFormReturn<any, any>;
@@ -28,7 +29,10 @@ const InputRender: FC<InputRenderProps> = (props) => {
   switch (inputType) {
     case 'TextField':
       return <FormTextField defaultValue={defaultValues?.[props.name]} {...(otherProps as FormInputTextField)} />;
-
+    case 'PasswordField':
+      return <PasswordField defaultValue={defaultValues?.[props.name]} {...(otherProps as FormInputPasswordField)} />;
+    case 'CheckboxField':
+      return <CheckboxField defaultValue={defaultValues?.[props.name]} {...(otherProps as FormInputCheckbox)} />;
     default:
       return <div>Invalid inputType</div>;
   }
@@ -40,7 +44,7 @@ export const InputGroup: React.FC<Props> = ({
   defaultValues,
   invisible,
   disableInputFields,
-  gridCols = tw`grid-cols-12`,
+  gridCols = tw`w-full`,
   spacing = tw`gap-x-2 gap-y-1.5`,
 }) => {
   return (

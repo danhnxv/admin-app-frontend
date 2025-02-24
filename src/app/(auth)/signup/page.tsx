@@ -1,7 +1,9 @@
+import { FormSignUp } from '@/screens/signup/components/FormSignup';
+
 export default function SignupPage() {
   return (
     <div>
-      <h1>Signup</h1>
+      <FormSignUp />
     </div>
   );
 }
